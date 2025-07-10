@@ -1,0 +1,44 @@
+---
+// SeccionConveniosDecorado.astro
+---
+
+<section class="relative bg-[#FAF5FF] py-20 px-4 overflow-hidden">
+  <!-- Formas decorativas (inician más arriba) -->
+  <img src="./imagenes/formas/1.svg" alt="" class="parallax hidden sm:block absolute top-[-160px] left-[5%] w-48 opacity-30 z-0" data-speed="2" />
+  <img src="./imagenes/formas/2.svg" alt="" class="parallax hidden sm:block absolute top-[-140px] right-[10%] w-40 opacity-30 z-0" data-speed="1.5" />
+  <img src="./imagenes/formas/3.svg" alt="" class="parallax hidden sm:block absolute bottom-[160%] left-[8%] w-36 opacity-30 z-0" data-speed="1.2" />
+  <img src="./imagenes/formas/4.svg" alt="" class="parallax hidden sm:block absolute bottom-[155%] right-[12%] w-36 opacity-30 z-0" data-speed="1.8" />
+
+  <!-- Contenido principal -->
+  <div class="relative z-10 max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-8">
+    <div class="w-full sm:w-[30%] text-purple-800 font-semibold text-lg text-center sm:text-left">
+      Podrás acceder a los convenios de bienestar social con tarifas preferenciales.
+    </div>
+
+    <div class="w-full sm:w-[70%] flex flex-wrap justify-center sm:justify-start gap-6">
+      <img src="./imagenes/iconos/c1.webp" alt="Convenio 1" class="w-20 h-20 object-contain" />
+      <img src="./imagenes/iconos/c2.webp" alt="Convenio 2" class="w-20 h-20 object-contain" />
+      <img src="./imagenes/iconos/c3.webp" alt="Convenio 3" class="w-20 h-20 object-contain" />
+      <img src="./imagenes/iconos/c4.webp" alt="Convenio 4" class="w-20 h-20 object-contain" />
+    </div>
+  </div>
+</section>
+
+<!-- Script parallax ajustado -->
+<script>
+  if (typeof window !== "undefined") {
+    const parallaxElements = document.querySelectorAll(".parallax");
+
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      parallaxElements.forEach(el => {
+        const speedAttr = el.getAttribute("data-speed");
+        const speed = parseFloat(speedAttr || "1");
+        if (el instanceof HTMLElement) {
+          // Ajustamos el coeficiente para que bajen más
+          el.style.transform = `translateY(${scrollY * speed * 0.1}px)`;
+        }
+      });
+    });
+  }
+</script>

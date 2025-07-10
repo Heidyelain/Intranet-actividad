@@ -1,15 +1,64 @@
+---
+// src/layouts/Layout.astro
+import "../styles/global.css";
+import Footer from "../components/FooterWeb.astro";
+---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Intranet | Actores Sociedad Colombiana de GestiÃ³n</title>
+		<meta
+			name="description"
+			content="Plataforma interna para socios de Actores Sociedad Colombiana de GestiÃ³n. Accede a herramientas, reportes y servicios exclusivos."
+		/>
+		<meta name="author" content="Actores Sociedad Colombiana de GestiÃ³n" />
+		<meta name="theme-color" content="#1E293B" />
+
+		<!-- Favicon -->
+		<link
+			rel="icon"
+			href="https://actores.org.co/favicon.ico"
+			type="image/x-icon"
+		/>
+
+		<!-- Open Graph (para compartir en redes) -->
+		<meta
+			property="og:title"
+			content="Intranet | Actores Sociedad Colombiana de GestiÃ³n"
+		/>
+		<meta
+			property="og:description"
+			content="Accede a herramientas internas exclusivas para socios de Actores Sociedad Colombiana de GestiÃ³n."
+		/>
+		<meta
+			property="og:image"
+			content="https://actores.org.co/img/og-image.jpg"
+		/>
+		<meta property="og:url" content="https://actores.org.co/intranet" />
+		<meta property="og:type" content="website" />
+
+		<!-- Astro generator (si aplica) -->
+		<meta name="generator" content="Astro" />
+
+		<!-- TipografÃ­a opcional -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
-	<body>
-		<slot />
+
+	<body
+		class="m-0 w-full h-full bg-repeat bg-[length:auto] bg-left-top"
+		style="background-image: url('./imagenes/mosaico.svg');"
+	>
+	<slot />
+		
 	</body>
+	<Footer />
 </html>
 
 <style>

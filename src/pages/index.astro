@@ -1,11 +1,64 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import NewsCard from "../components/NewsCard.astro";
+import MessageOptimize from "../components/MessageOptimize.astro";
+import QuickAccess from "../components/QuickAccess.astro";
+import SeccionCardsBeneficios from "../components/SeccionCardsBeneficios.astro";
+import SeccionConveniosParallax from "../components/SeccionConveniosParallax.astro";
+import SeccionLey1403 from "../components/SeccionLey1403.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
+	<Navbar />
 	<Welcome />
+	<QuickAccess />
+	<section class="py-16">
+		<div class="max-w-6xl mx-auto overflow-x-auto">
+			<div class="mb-10">
+				<span
+					class="text-purple-600 uppercase tracking-wide font-semibold text-sm md:text-base"
+				>
+					Últimas noticias
+				</span>
+				<h2
+					class="text-gray-900 text-3xl md:text-4xl font-extrabold normal-case tracking-normal mt-1"
+				>
+					De nuestro blog
+				</h2>
+			</div>
+			<div class="flex gap-6 md:gap-8 min-w-[768px] md:min-w-full mb-2">
+				<NewsCard
+					image="./imagenes/noticias/noticeFor.webp"
+					pretitulo="Bienestar Social"
+					titulo="2021: Un año para alcanzar gran metas y fortalecer el trabajo en equipo"
+					parrafo="Fueron tres los logros fundamentales en esta área: La consolidación como equipo de trabajo entre Cindy y Andrea quienes desde junio de 2021 han trabajado de la mano en beneficio de nuestros Socios."
+					enlace="#"
+				/>
+				<NewsCard
+					image="./imagenes/noticias/noticeTwoAlt.webp"
+					pretitulo="Distribución"
+					titulo="Trabajar en equipo trae grandes resultados: Distribución Nacional."
+					parrafo="El año 2021 fue un año retador y de mucho aprendizaje para esta área. En primer semestre del año se logró realizar el pago por la distribución a nuestros socios de los derechos generados por ellos en..."
+					enlace="#"
+				/>
+				<NewsCard
+					image="./imagenes/noticias/noticeSix.webp"
+					pretitulo="Jurídica"
+					titulo="Resultados importantes para la gestión de la Sociedad."
+					parrafo="Dentro de los logros del año 2021 del área jurídica, destacamos principalmente el resultado del proceso judicial iniciado en contra del cableoperador PSI TELECOMUNICACIONES para..."
+					enlace="#"
+				/>
+			</div>
+		</div>
+	</section>
+	<SeccionCardsBeneficios />
+	<SeccionConveniosParallax />
+	<SeccionLey1403 />
+
+	<!-- <MessageOptimize /> -->
 </Layout>

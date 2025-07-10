@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^intranet\.actores\.org\.co$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.intranet\.actores\.org\.co$
+RewriteRule ^/?$ /intranet/ [R=301,L]

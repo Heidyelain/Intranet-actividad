@@ -1,0 +1,104 @@
+---
+---
+
+<section class="relative py-20 px-4">
+    <div
+        class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12"
+    >
+        <!-- Columna 1: Imagen más pequeña, sin estilos -->
+        <div class="w-full md:w-1/2 flex justify-center">
+            <button id="openModal" class="focus:outline-none">
+                <img
+                    src="./imagenes/videoback.webp"
+                    alt="Ver video"
+                    class="max-w-sm"
+                />
+            </button>
+        </div>
+
+        <!-- Columna 2: Texto -->
+        <div class="w-full md:w-1/2 space-y-4">
+            <span class="text-sm text-gray-500 uppercase tracking-wider">
+                La ley 1403
+            </span>
+            <h2 class="text-3xl font-bold text-gray-900">
+                ¿Qué derecho gestionamos?
+            </h2>
+            <p class="text-gray-700 text-base">
+                El derecho de remuneración por comunicación pública de los
+                intérpretes audiovisuales, que se da cada vez que se divulga una
+                interpretación audiovisual. Para su cobro en establecimientos
+                abiertos al público además debe darse
+                <strong class="font-semibold">
+                    "con el fin de entretener al consumidor con ánimo de lucro o de ventas"
+                </strong>.
+            </p>
+            <button
+                id="openModal2"
+                class="inline-block bg-[#642D8E] text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-[#553174] transition"
+            >
+                Ver video
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal centrado horizontal y vertical -->
+    <div
+        id="videoModal"
+        class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center"
+    >
+        <div class="relative w-full max-w-3xl mx-auto px-4">
+            <button
+                id="closeModal"
+                class="absolute top-4 right-6 text-white text-3xl font-bold hover:text-gray-300 z-10"
+            >
+                &times;
+            </button>
+            <div class="aspect-video bg-black">
+                <iframe
+                    id="videoIframe"
+                    class="w-full h-full"
+                    src="https://www.youtube-nocookie.com/embed/jLMgFZGLSsc"
+                    title="Ley 1403"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Script para abrir/cerrar modal -->
+<script>
+    const modal = document.getElementById("videoModal");
+    const openModal = document.getElementById("openModal");
+    const openModal2 = document.getElementById("openModal2");
+    const closeModal = document.getElementById("closeModal");
+    const videoIframe = document.getElementById("videoIframe");
+
+    const originalSrc = videoIframe?.getAttribute("src");
+
+    const open = () => {
+        modal?.classList.remove("hidden");
+    };
+
+    const close = () => {
+        modal?.classList.add("hidden");
+        if (videoIframe && originalSrc) {
+            videoIframe.setAttribute("src", originalSrc); // pausa y reinicia el video
+        }
+    };
+
+    openModal?.addEventListener("click", open);
+    openModal2?.addEventListener("click", open);
+    closeModal?.addEventListener("click", close);
+
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") close();
+    });
+
+    modal?.addEventListener("click", (e) => {
+        if (e.target === modal) close();
+    });
+</script>
