@@ -1,0 +1,67 @@
+---
+interface Props {
+  href: string;
+  text: string;
+  style?: 'primary' | 'secondary' | 'purple' | 'white'; // Define estilos predefinidos
+  size?: 'sm' | 'md' | 'lg'; // Define tamaños predefinidos
+  fullWidth?: boolean; // Para que ocupe todo el ancho si es necesario
+  external?: boolean; // Para enlaces externos (target="_blank", rel="noopener noreferrer")
+}
+
+const {
+  href,
+  text,
+  style = 'primary', // Estilo por defecto
+  size = 'md',       // Tamaño por defecto
+  fullWidth = false,
+  external = false,
+} = Astro.props;
+
+// Clases base para el botón
+let buttonClasses = "font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out text-center";
+
+// Aplicar estilos
+switch (style) {
+  case 'primary':
+    buttonClasses += " bg-blue-600 hover:bg-blue-700 text-white";
+    break;
+  case 'secondary':
+    buttonClasses += " bg-gray-200 hover:bg-gray-300 text-gray-800";
+    break;
+  case 'purple': // Para el botón morado 
+    buttonClasses += " bg-[#642D8E] hover:bg-[#EB128A] text-white";
+    break;
+  case 'white': // Para el botón blanco como "Ir a Actores SCG"
+    buttonClasses += " bg-white text-[#642D8E] hover:bg-[#EB128A] hover:text-white";
+    break;
+  default:
+    buttonClasses += " bg-blue-600 hover:bg-blue-700 text-white";
+}
+
+// Aplicar tamaños
+switch (size) {
+  case 'sm':
+    buttonClasses = buttonClasses.replace("py-3 px-6", "py-2 px-4 text-sm");
+    break;
+  case 'lg':
+    buttonClasses = buttonClasses.replace("py-3 px-6", "py-4 px-8 text-lg");
+    break;
+  // 'md' es el tamaño por defecto, no necesita cambios
+}
+
+// Aplicar ancho completo
+if (fullWidth) {
+  buttonClasses += " block w-full";
+} else {
+  buttonClasses += " inline-flex justify-center items-center self-start"; // Para que no se estire y se alinee
+}
+---
+
+<a
+  href={href}
+  class={buttonClasses}
+  target={external ? "_blank" : "_self"}
+  rel={external ? "noopener noreferrer" : undefined}
+>
+  {text}
+</a>

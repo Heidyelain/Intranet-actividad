@@ -1,0 +1,46 @@
+---
+// 1. Definimos la interfaz para las propiedades (Props).
+// Esto es fundamental para que TypeScript y Astro reconozcan las variables que vas a usar.
+import Button from './Button.astro'; // Importamos el componente Button para usarlo en la sección de noticias destacadas
+interface Props {
+  image: string;    // Ruta de la imagen destacada
+  pretitulo: string; // Pre-título o categoría de la noticia
+  titulo: string;   // Título principal de la noticia
+  parrafo: string;  // Párrafo o resumen de la noticia
+  enlace: string;   // URL a la que redirige la noticia
+}
+
+// 2. Desestructuramos las propiedades de Astro.props.
+// Esto hace que 'image', 'pretitulo', etc., estén disponibles para usar en el HTML.
+const { image, pretitulo, titulo, parrafo, enlace } = Astro.props;
+---
+
+<section class="py-16 relative z-0 overflow-hidden">
+    <div class="max-w-6xl mx-auto md:grid md:grid-cols-3 md:gap-8 md:items-center">
+
+        <div class="md:col-span-2 rounded-lg shadow-xl overflow-hidden mt-8 md:mt-0 md:order-first">
+            <img
+                src={image}
+                alt={titulo}
+                class="w-full h-auto object-cover rounded-lg"
+                fetchpriority="high"
+                style="max-height: 550px; min-height: 350px;" />
+        </div>
+
+        <div class="p-8 text-center md:text-left md:order-last">
+            <span class="text-purple-600 uppercase tracking-wide font-semibold text-sm mb-2 block">
+                {pretitulo}
+            </span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+                {titulo}
+            </h2>
+            <p class="text-gray-600 text-base leading-relaxed mb-6">
+                {parrafo}
+            </p>
+
+            <Button href={enlace} text="Leer más" style="purple" size="md" /> 
+        </div>
+
+    </div>
+
+    </section>
