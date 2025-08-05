@@ -6,6 +6,5 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
     base: '/intranet-actividad/',
     build: {
-    assets: '.'
   }
 });
